@@ -1,12 +1,26 @@
-import React from "react";
-import { TextField } from "./Components/TextField";
+import * as React from "react";
+import { Provider } from "react-redux";
+import { Layout } from "antd";
+import { store } from "./redux/store";
+
+import Navbar from "./Components/Navbar";
+import Counter from "./Components/Counter";
+
+const { Header, Content, Footer } = Layout;
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Hello Typescript</h1>
-      <TextField text="name" />
-    </div>
+    <Provider store={store}>
+      <Layout>
+        <Header>
+          <Navbar />
+        </Header>
+        <Content style={{ padding: "40px" }}>
+          <Counter />
+        </Content>
+        <Footer></Footer>
+      </Layout>
+    </Provider>
   );
 };
 
